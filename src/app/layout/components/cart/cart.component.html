@@ -1,0 +1,39 @@
+<table mat-table [dataSource]="cartDetails" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="product">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.product.name}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantiity}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef> Update </th>
+        <td mat-cell *matCellDef="let element">
+            <input matInput type="text" placeholder="update" [(ngModel)]="quantity" required>
+            <button mat-raised-button color="primary" (click)=updateQuantity(element.product)>Update
+            </button>
+
+        </td>
+    </ng-container> 
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-raised-button color="primary" (click)=remove(element.product)>Remove
+            </button> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
