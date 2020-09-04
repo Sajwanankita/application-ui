@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
   }
 
   updateQuantity(product: Product): void {
-    this.cartService.updateQuantity(product, +this.quantity);s
+    this.cartService.updateQuantity(product, +this.quantity);
     this.cartDetails = this.cartService.fetchAllCart();
   }
 }
